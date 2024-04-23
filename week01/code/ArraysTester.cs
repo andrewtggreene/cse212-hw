@@ -39,7 +39,14 @@ public static class ArraysTester {
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
 
-        return new double[0]; // replace this return statement with your own
+        // First create a static array that has the length of the length variable
+        // Then populate the list using a loop by updating each value of 
+        // the list with the next multiple of the given number
+        var listOfMultiples = new double[length];
+        for (int i = 1; i< length+1;i++){
+            listOfMultiples[i-1] = number*i;
+        }
+        return listOfMultiples; // replace this return statement with your own
     }
     
     /// <summary>
