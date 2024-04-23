@@ -64,5 +64,33 @@ public static class ArraysTester {
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
 
+        // Utilizing the built in functions in C# we can figure this out
+        // First we figure out if the amount is larger than the length of the list.
+        // calculate a new amount by calculating the amount % data.Count.
+        // Now we can create two lists, call the first list last list
+        // Using the GetRange function we want to populate this list with the values
+        // we want at the end of our new list. So call the GetRange function from 0 with  
+        // all of the values from the beginning until the amount we want to rotate by.
+        // Now we want to remove those elements from our data list so call the RemoveRange
+        // function with the same previous values.
+        // Now create the second list and call it first list
+        // Using the GetRange function starting at index 0, grab the rest of the 
+        // data list, using a count value of data.Count
+        // Now call the RemoveRange function with the values we most recently used in the GetRange
+        // function.
+        // The list data is now empty, and we have two lists. One list that has the numbers we
+        // want last and the other with the numbers we want first, convenietly labeled last
+        // and first. We now add these lists to our data list using the AddFirst function making
+        // sure we add the last list after we add the first list.
+
+        var moduloAmount = amount % data.Count;
+        var lastList = new List<int>{};
+        lastList = data.GetRange(0, data.Count - moduloAmount);
+        data.RemoveRange(0,data.Count - moduloAmount);
+        var firstList = new List<int>{};
+        firstList = data.GetRange(0, data.Count);
+        data.RemoveRange(0,data.Count);
+        data.AddRange(firstList);
+        data.AddRange(lastList);
     }
 }
