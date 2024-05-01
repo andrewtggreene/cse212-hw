@@ -15,7 +15,8 @@
         // Console.WriteLine(players);    // This can be un-commented out for debug help
         while (players.Length > 0)
             players.GetNextPerson();
-        // Defect(s) Found: 
+        // Defect(s) Found: The Queue removes the person at the end instead of the person at the 
+        // beginning of the queue. The queue also does not cycle through the users. Insert() was used instead of Add()
 
         Console.WriteLine("---------");
 
@@ -38,7 +39,7 @@
         while (players.Length > 0)
             players.GetNextPerson();
 
-        // Defect(s) Found: 
+        // Defect(s) Found: No new errors or defects found. Test ran as expected
 
         Console.WriteLine("---------");
 
@@ -56,7 +57,8 @@
             players.GetNextPerson();
             // Console.WriteLine(players);
         }
-        // Defect(s) Found: 
+        // Defect(s) Found: Tim only appears once instead of many times, resulting in No one in the queue to appear 4 times. No case was added for
+        // a person with a number less than 1 to GetNextPerson().
 
         Console.WriteLine("---------");
 
@@ -73,7 +75,7 @@
             players.GetNextPerson();
             // Console.WriteLine(players);
         }
-        // Defect(s) Found: 
+        // Defect(s) Found: After resolving the issue in Test 3, the test passed without error.
 
         Console.WriteLine("---------");
 
@@ -83,6 +85,6 @@
         Console.WriteLine("Test 5");
         players = new TakingTurnsQueue();
         players.GetNextPerson();
-        // Defect(s) Found:
+        // Defect(s) Found: This returned the error as expected.
     }
 }
