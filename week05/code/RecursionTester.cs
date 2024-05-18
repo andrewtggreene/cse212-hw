@@ -333,32 +333,60 @@ public static class RecursionTester {
         // If this is the first time running the function, then we need
         // to initialize the currPath list.
         if (currPath == null){
-            currPath = new List<ValueTuple<int, int>>{(0,0)};
+            currPath = new List<ValueTuple<int, int>>();
+            currPath.Add((0,0));
         }
         // currPath.Add((1,2)); // Use this syntax to add to the current path
 
         // TODO Start Problem 5
         // ADD CODE HERE
+
+        if (maze.IsValidMove(currPath, x - 1, y)){
+            x -= 1;
+            currPath.Add((x, y));
+            if (!maze.IsEnd(x, y)){
+                SolveMaze(maze, x, y, currPath);
+            } else {
+                Console.WriteLine(currPath.AsString());
+            }
+            x += 1;
+            currPath.RemoveAt(currPath.Count - 1);
+        }
+        if (maze.IsValidMove(currPath, x + 1, y)){
+            x += 1;
+            currPath.Add((x, y));
+            if (!maze.IsEnd(x, y)){
+                SolveMaze(maze, x, y, currPath);
+            } else {
+                Console.WriteLine(currPath.AsString());
+            }
+            x -= 1;
+            currPath.RemoveAt(currPath.Count - 1);
+        }
+        if (maze.IsValidMove(currPath, x, y+1)){
+            y += 1;
+            currPath.Add((x, y));
+            if (!maze.IsEnd(x, y)){
+                SolveMaze(maze, x, y, currPath);
+            } else {
+                Console.WriteLine(currPath.AsString());
+            }
+            y -= 1;
+            currPath.RemoveAt(currPath.Count - 1);
+        }
+        if (maze.IsValidMove(currPath, x, y-1)){
+            y -= 1;
+            currPath.Add((x, y));
+            if (!maze.IsEnd(x, y)){
+                SolveMaze(maze, x, y, currPath);
+            } else {
+                Console.WriteLine(currPath.AsString());
+            }
+            y += 1;
+            currPath.RemoveAt(currPath.Count - 1);
+        }      
         
-        if (maze.IsEnd(x,y)){
-            Console.WriteLine(currPath.AsString());
-        } 
-        if (maze.IsValidMove(currPath,x+1,y)){
-            currPath.Add((x+1,y));
-            SolveMaze(maze, x+1, y,currPath);
-        }
-        if (maze.IsValidMove(currPath,x,y+1)){
-            currPath.Add((x,y+1));
-            SolveMaze(maze, x, y+1,currPath);
-        }
-        if (maze.IsValidMove(currPath,x-1,y)){
-            currPath.Add((x-1,y));
-            SolveMaze(maze, x-1, y,currPath);
-        }
-        if (maze.IsValidMove(currPath,x,y-1)){
-            currPath.Add((x,y-1));
-            SolveMaze(maze, x, y-1,currPath);
-        }
-        // Console.WriteLine(currPath.AsString()); // Use this to print out your path when you find the solution
+        //Console.WriteLine(currPath.AsString()); // Use this to print out your path when you find the solution
+        
     }
 }
